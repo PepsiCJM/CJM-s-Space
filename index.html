@@ -11,7 +11,7 @@
             }
         </script>
         <style type="text/css">
-            .a-text1 {
+            .div-block-github {
                 color: beige ;
                 cursor: pointer ;
                 position: relative;
@@ -22,6 +22,18 @@
                 background-color: cornsilk;
                 color: coral ;
                 cursor: pointer ;
+                margin-top: 0px;
+            }
+            .a-font{
+                color: cornsilk;
+            }
+            .h1-style{
+                color: darkslategrey;
+                margin-bottom: 10px;
+            }
+            .p-style{
+                color: dimgrey;
+                margin-top: 0px;
             }
             .body-style{
                 background-color: bisque;
@@ -31,7 +43,6 @@
                 margin-right: 0px;
                 min-width: 1000px;
                 height: 1080px;
-
             }
             .div-block-title-bar {
                     background-color: darkcyan ;
@@ -43,9 +54,8 @@
                 width: 35px;
                 height: 35px;
                 left: 84.1%;
-                top: -15%;
+                top: -20%;
                 background: ivory;
-
             }
             .header-head{
                 background-color: oldlace;
@@ -54,7 +64,6 @@
                 text-align: center;
             }
             .div-block-body {
-
                 position: relative;
                 margin-top: 10px;
                 margin-bottom: 10px;
@@ -62,7 +71,6 @@
                 padding-right: 100px;
                 height: 800px ;
                 line-height: 20px ;
-
             }
             .div-block-frame {
                 background-color: gainsboro ;
@@ -75,60 +83,79 @@
             }
             .div-block-details {
                 background-color: oldlace ;
+                padding: 15px;
                 text-align: left ;
             }
             .div-block-foot {
                 background-color: gainsboro ;
              }
-
             .footer-style{
-                background-color: lightgoldenrodyellow ;
+                background-color: lightskyblue ;
                 margin-top: 10px;
                 margin-bottom: 100px;
                 margin-left: 0px;
                 margin-right: 0px;
-                height: 200px;
+                height: 100px;
+                text-align: center ;
+            }
+            .a-foot-content{
+                padding: 42px;
+                font-size: 22px;
+                cursor: pointer;
             }
         </style>
 </head>
 
 <body class="body-style">
-
                 <div class="div-block-title-bar">
-                    <a  class="a-text1" href="http;//www.github.com">
-                        Github
-                    </a>
+                    <div class="div-block-github">
+                        <a class="a-font" href="http;//www.github.com">
+                            Github
+                        </a>
+                    </div>
                     <div class="div-block-title-logo">
-
                     </div>
                 </div>
-
                 <header class="header-head">
-                    <h1>PepsiChen's HomePage</h1>
-                    <p>This is the first webpage which is designed by myself</p>
+                    <h1 class ="h1-style">PepsiChen's HomePage</h1>
+                    <p class ="p-style">This is the first webpage which is designed by myself</p>
                 </header>
-
-                <div class="div-block-body">
+<div class="div-block-body">
                     <div class="div-block-frame">
                         <div class="div-block-content">
                             <div class="div-block-details">
-                                <a class="a-text2"  onclick="aa()">
+                                <p class="a-text2">
                                     There should be whitespace between paragraphs.</br>
                                     We recommend including a README, </br>
                                     or a file with information about your project.</br>
-                                </a>
+                                </p>
+                                <p class="a-text2">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </p>
+                                <p class="a-text2">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </p>
+                                <p class="a-text2">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </p>
                             </div>
                         </div>
                         <div class="div-block-foot">
                             <footer class="footer-style">
-                                foot block
+                                <div class="a-foot-content">
+                                    <a  class="a-font" onclick="aa()">
+                                        Information
+                                    </a>
+                                </div>
                             </footer>
                         </div>
                     </div>
-
                 </div>
-
-
-
 </body>
 </html>
