@@ -9,14 +9,95 @@
             function aa() {
                 alert('Hello nice to meet you ~ !');
             }
+            var flag = false;
+            window.onscroll = function () {
+                var current_scrollTop_value = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                var targetElement = document.getElementById("title-bar");
+                if(current_scrollTop_value > 110){
+                    flag = true;
+                }else {
+                    flag = false;
+                }
+            }
+            window.onload = function () {
+                var run = document.getElementById("title-bar");
+                var speed = 1;
+                var timer = null;
+                var alpha = 30;
+                run.onmouseover = function () {
+                    startrun(100);
+                }
+                run.onmouseout = function () {
+                    startrun(30);
+                }
+                if(flag){
+                    startrun(100);
+                }else {
+                    startrun(30);
+                }
+
+                function startrun(target) {
+                    clearInterval(timer);
+                    timer = setInterval(function () {
+                        if (target > alpha) {
+                            speed = 2;
+                        } else {
+                            speed = -2;
+                        }
+                        if (alpha != target) {
+                            alpha = alpha + speed;
+                            run.style.filter = 'alpha(opacity=' + alpha + ')';
+                            run.style.opacity = alpha / 100;
+                            document.title = alpha;
+                        }
+                        else {
+                            clearInterval(timer);
+                        }
+                    }, 30);
+                }
+            }
+            // var targetElement = document.getElementById("title-bar");
+            // var timer = null;
+            // var flag_value_alpha = 30;
+            // var Offset = 0;
+            //
+            // if(flag){
+            //     changeAlphaTo(30);
+            // }else {
+            //     changeAlphaTo(100);
+            // }
+            // targetElement.onmouseover = function(){
+            //     changeAlphaTo(100);
+            // }
+            // targetElement.onmouseout = function(){
+            //     changeAlphaTo(30);
+            // }
+            // function changeAlphaTo(target_alpha) {//注：方法中的flag_value_alpha值是一直在变化的。传入的target_alpha值是你的目的所在
+            //     clearInterval(timer);
+            //     timer = targetElement.setInterval(function () {
+            //         if(flag_value_alpha > target_alpha){
+            //             Offset =-2;
+            //         }else{
+            //             Offset = 2;
+            //         }
+            //         alert(flag_value_alpha);
+            //         if(target_alpha != flag_value_alpha){
+            //             flag_value_alpha = flag_value_alpha + Offset;
+            //             targetElement.style.opacity = flag_value_alpha / 100;
+            //             document.title = flag_value_alpha;
+            //         }else{
+            //             clearInterval(timer);
+            //         }
+            //     },30);
+            // }
+
         </script>
         <style type="text/css">
             .div-block-github {
-                color: beige ;
-                cursor: pointer ;
-                position: relative;
-                right: 35%;
-                top: 50%;
+                color: beige;
+                cursor: pointer;
+                padding-top: 25px;
+                float: left;
             }
             .a-text2 {
                 background-color: cornsilk;
@@ -37,43 +118,48 @@
             }
             .body-style{
                 background-color: bisque;
-                margin-top: 0px;
-                margin-bottom: 10px;
-                margin-left: 0px;
-                margin-right: 0px;
+                margin: 0px 0px 10px;
                 min-width: 1000px;
                 height: 1080px;
             }
             .div-block-title-bar {
-                    background-color: darkcyan ;
-                    height: 55px ;
-                    text-align: center ;
+                background-color: darkcyan;
+                height: 55px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                opacity: 0.3;
+
+            }
+            .div-block-title-bar-box{
+                margin: 0 auto;
+                width: 1000px;
             }
             .div-block-title-logo {
-                position: relative ;
                 width: 35px;
                 height: 35px;
-                left: 84.1%;
-                top: -20%;
                 background: ivory;
+                float: right;
+                margin-top: 10px;
+
             }
             .header-head{
                 background-color: oldlace;
-                padding-top: 20px;
+                padding-top: 75px;
                 padding-bottom: 20px;
                 text-align: center;
+                margin-bottom: 10px;
             }
             .div-block-body {
-                position: relative;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                padding-left: 100px;
-                padding-right: 100px;
+                margin: 0 auto;
+                width: 960px;
                 height: 800px ;
                 line-height: 20px ;
             }
             .div-block-frame {
-                background-color: gainsboro ;
+                background-color: gainsboro;
+                margin-bottom: 20px;
+                height: inherit;
             }
             .div-block-content {
                 background-color:  gainsboro;
@@ -86,41 +172,40 @@
                 padding: 15px;
                 text-align: left ;
             }
-            .div-block-foot {
-                background-color: gainsboro ;
-             }
             .footer-style{
-                background-color: lightskyblue ;
-                margin-top: 10px;
-                margin-bottom: 100px;
-                margin-left: 0px;
-                margin-right: 0px;
-                height: 100px;
-                text-align: center ;
+                background-color: lightskyblue;
+                margin: 10px 0px 0px;
+                height: 200px;
+                text-align: center;
+                padding-bottom: 100px;
             }
             .a-foot-content{
-                padding: 42px;
+                margin-top: 30px;
                 font-size: 22px;
                 cursor: pointer;
+                float: right;
+                margin-right: 150px;
             }
         </style>
 </head>
 
 <body class="body-style">
-                <div class="div-block-title-bar">
-                    <div class="div-block-github">
-                        <a class="a-font" href="http;//www.github.com">
-                            Github
-                        </a>
-                    </div>
-                    <div class="div-block-title-logo">
+                <div id="title-bar" class="div-block-title-bar">
+                    <div class="div-block-title-bar-box">
+                        <div class="div-block-github">
+                            <a class="a-font" href="http;//www.github.com">
+                                Github
+                            </a>
+                        </div>
+                        <div class="div-block-title-logo">
+                        </div>
                     </div>
                 </div>
                 <header class="header-head">
                     <h1 class ="h1-style">PepsiChen's HomePage</h1>
-                    <p class ="p-style">This is the first webpage which is designed by myself</p>
+                    <p class ="p-style">Great works are performed not by strength but by perseverance</p>
                 </header>
-<div class="div-block-body">
+                <div class="div-block-body">
                     <div class="div-block-frame">
                         <div class="div-block-content">
                             <div class="div-block-details">
@@ -146,16 +231,38 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="div-block-foot">
-                            <footer class="footer-style">
-                                <div class="a-foot-content">
-                                    <a  class="a-font" onclick="aa()">
-                                        Information
-                                    </a>
-                                </div>
-                            </footer>
+                        <div class="div-block-content">
+                            <div class="div-block-details">
+                                <p class="a-text2">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </p>
+                                <p class="a-text2">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </p>
+                                <p class="a-text2">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </p>
+                                <p class="a-text2">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <footer class="footer-style">
+                    <div class="a-foot-content">
+                        <a  class="a-font" onclick="aa()">
+                            Information
+                        </a>
+                    </div>
+                </footer>
 </body>
 </html>
