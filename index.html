@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
         <meta charset="UTF-8">
         <title>MyFirstHTML</title>
@@ -10,43 +11,124 @@
             }
         </script>
         <style type="text/css">
-                .body_style{
-                        background-color: dimgray;
-                        margin: 10px;
-                }
+            .a-text1 {
+                color: beige ;
+                cursor: pointer ;
+                position: relative;
+                right: 35%;
+                top: 50%;
+            }
+            .a-text2 {
+                background-color: cornsilk;
+                color: coral ;
+                cursor: pointer ;
+            }
+            .body-style{
+                background-color: bisque;
+                margin-top: 0px;
+                margin-bottom: 10px;
+                margin-left: 0px;
+                margin-right: 0px;
+                min-width: 1000px;
+                height: 1080px;
 
-                .block1 {
-                        background-color: antiquewhite ;
-                        padding: 20px ;
-                        text-align: center ;
-                }
-                .block2 {
-                        background-color: antiquewhite ;
-                        padding: 50px ;
-                        text-align: center ;
-                }
-                .text {
-                        color: darkcyan ;
-                        cursor: pointer ;
-                }
+            }
+            .div-block-title-bar {
+                    background-color: darkcyan ;
+                    height: 55px ;
+                    text-align: center ;
+            }
+            .div-block-title-logo {
+                position: relative ;
+                width: 35px;
+                height: 35px;
+                left: 84.1%;
+                top: -15%;
+                background: ivory;
+
+            }
+            .header-head{
+                background-color: oldlace;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                text-align: center;
+            }
+            .div-block-body {
+
+                position: relative;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-left: 100px;
+                padding-right: 100px;
+                height: 800px ;
+                line-height: 20px ;
+
+            }
+            .div-block-frame {
+                background-color: gainsboro ;
+            }
+            .div-block-content {
+                background-color:  gainsboro;
+                padding-top: 10px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            .div-block-details {
+                background-color: oldlace ;
+                text-align: left ;
+            }
+            .div-block-foot {
+                background-color: gainsboro ;
+             }
+
+            .footer-style{
+                background-color: lightgoldenrodyellow ;
+                margin-top: 10px;
+                margin-bottom: 100px;
+                margin-left: 0px;
+                margin-right: 0px;
+                height: 200px;
+            }
         </style>
 </head>
 
-<body class="body_style">
-                <div class="block1">
-                        <a class="text" onclick="aa()">
-                                click here to see something
-                        </a>
+<body class="body-style">
+
+                <div class="div-block-title-bar">
+                    <a  class="a-text1" href="http;//www.github.com">
+                        Github
+                    </a>
+                    <div class="div-block-title-logo">
+
+                    </div>
                 </div>
-                <div class="block2">
-                        <a class="text" onclick="aa()">
-                                click here to see something
-                        </a>
+
+                <header class="header-head">
+                    <h1>PepsiChen's HomePage</h1>
+                    <p>This is the first webpage which is designed by myself</p>
+                </header>
+
+                <div class="div-block-body">
+                    <div class="div-block-frame">
+                        <div class="div-block-content">
+                            <div class="div-block-details">
+                                <a class="a-text2"  onclick="aa()">
+                                    There should be whitespace between paragraphs.</br>
+                                    We recommend including a README, </br>
+                                    or a file with information about your project.</br>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="div-block-foot">
+                            <footer class="footer-style">
+                                foot block
+                            </footer>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="block1">
-                        <a class="text" onclick="aa()">
-                                click here to see something
-                        </a>
-                </div>
+
+
+
 </body>
 </html>
