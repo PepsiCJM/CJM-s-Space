@@ -2,30 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <meta charset="UTF-8">
+        <title>MyFirstHTML</title>
+        <script>
+            function aa() {
+                alert('Hello nice to meet you ~ !');
+            }
+        </script>
+        <style type="text/css">
+                .body_style{
+                        background-color: dimgray;
+                        margin: 10px;
+                }
 
-    <meta charset="UTF-8">
-    <title>MyFirstHTML</title>
-
-    <script>
-
-        function aa() {
-            
-            alert('Hello nice to meet you ~ !');
-        }
-
-    </script>
-
-
-<style></style>
-
+                .block1 {
+                        background-color: antiquewhite ;
+                        padding: 20px ;
+                        text-align: center ;
+                }
+                .block2 {
+                        background-color: antiquewhite ;
+                        padding: 50px ;
+                        text-align: center ;
+                }
+                .text {
+                        color: darkcyan ;
+                        cursor: pointer ;
+                }
+        </style>
 </head>
 
-<body>
+<body class="body_style">
 
-    <p id="see" onclick="aa()">click here to see something</p>
-
-
-
+                <div class="block1">
+                        <a class="text" onclick="aa()">
+                                click here to see something
+                        </a>
+                </div>
+                <div class="block2">
+                        <a class="text" onclick="aa()">
+                                click here to see something
+                        </a>
+                </div>
+                <div class="block1">
+                        <a class="text" onclick="aa()">
+                                click here to see something
+                        </a>
+                </div>
 
 
 
