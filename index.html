@@ -9,96 +9,38 @@
             function aa() {
                 alert('Hello nice to meet you ~ !');
             }
-            var flag = false;
+            const limit_height = 80;
+            const opacityFlag  = 0.2;
+            var opacityValue  = 100;
+            var Offset  = 1;
+            var finalValue = 0;
+            var past_scrollTop_value = -1;
+            var aa = 0;
             window.onscroll = function () {
                 var current_scrollTop_value = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
                 var targetElement = document.getElementById("title-bar");
-                if(current_scrollTop_value > 110){
-                    flag = true;
-                }else {
-                    flag = false;
+                var footEle = document.getElementById("foot");
+                document.title = current_scrollTop_value;
+                if (current_scrollTop_value === 0) {
+                    targetElement.style.opacity = 1;// ------------------------------------强制设置顶端时透明度显示
+                    opacityValue = 100;
+                    Offset = 1;
+                    finalValue = 0;
+                    past_scrollTop_value = -1;
+                }
+                if (current_scrollTop_value < limit_height) {
+                    Offset = past_scrollTop_value - current_scrollTop_value; // -------Offset上到下为 负值，下到上为 正值
+                    past_scrollTop_value = current_scrollTop_value;
+                    opacityValue = opacityValue + Offset;
+                    finalValue = opacityValue / 100;
+                    targetElement.style.opacity = finalValue;
+                } else {  //-------------------------------------------------------------------- 大于100这个界限，就不做变化了~
+                    targetElement.style.opacity = opacityFlag;// -------------------------强制设置最终透明度显示
                 }
             }
-            window.onload = function () {
-                var run = document.getElementById("title-bar");
-                var speed = 1;
-                var timer = null;
-                var alpha = 30;
-                run.onmouseover = function () {
-                    startrun(100);
-                }
-                run.onmouseout = function () {
-                    startrun(30);
-                }
-                if(flag){
-                    startrun(100);
-                }else {
-                    startrun(30);
-                }
-
-                function startrun(target) {
-                    clearInterval(timer);
-                    timer = setInterval(function () {
-                        if (target > alpha) {
-                            speed = 2;
-                        } else {
-                            speed = -2;
-                        }
-                        if (alpha != target) {
-                            alpha = alpha + speed;
-                            run.style.filter = 'alpha(opacity=' + alpha + ')';
-                            run.style.opacity = alpha / 100;
-                            document.title = alpha;
-                        }
-                        else {
-                            clearInterval(timer);
-                        }
-                    }, 30);
-                }
-            }
-            // var targetElement = document.getElementById("title-bar");
-            // var timer = null;
-            // var flag_value_alpha = 30;
-            // var Offset = 0;
-            //
-            // if(flag){
-            //     changeAlphaTo(30);
-            // }else {
-            //     changeAlphaTo(100);
-            // }
-            // targetElement.onmouseover = function(){
-            //     changeAlphaTo(100);
-            // }
-            // targetElement.onmouseout = function(){
-            //     changeAlphaTo(30);
-            // }
-            // function changeAlphaTo(target_alpha) {//注：方法中的flag_value_alpha值是一直在变化的。传入的target_alpha值是你的目的所在
-            //     clearInterval(timer);
-            //     timer = targetElement.setInterval(function () {
-            //         if(flag_value_alpha > target_alpha){
-            //             Offset =-2;
-            //         }else{
-            //             Offset = 2;
-            //         }
-            //         alert(flag_value_alpha);
-            //         if(target_alpha != flag_value_alpha){
-            //             flag_value_alpha = flag_value_alpha + Offset;
-            //             targetElement.style.opacity = flag_value_alpha / 100;
-            //             document.title = flag_value_alpha;
-            //         }else{
-            //             clearInterval(timer);
-            //         }
-            //     },30);
-            // }
-
         </script>
         <style type="text/css">
-            .div-block-github {
-                color: beige;
-                cursor: pointer;
-                padding-top: 25px;
-                float: left;
-            }
+
             .a-text2 {
                 background-color: cornsilk;
                 color: coral ;
@@ -124,29 +66,37 @@
             }
             .div-block-title-bar {
                 background-color: darkcyan;
-                height: 55px;
-                text-align: center;
+                height: 3.54rem;
                 position: fixed;
                 width: 100%;
-                opacity: 0.3;
-
             }
             .div-block-title-bar-box{
+                position: relative;
                 margin: 0 auto;
-                width: 1000px;
+                width: 70%;
+                height: 55px;
+                z-index: 2;
+            }
+            .div-block-github {
+                color: beige;
+                cursor: pointer;
+                padding-top: 25px;
+                float: left;
             }
             .div-block-title-logo {
+                position: absolute;
                 width: 35px;
                 height: 35px;
                 background: ivory;
-                float: right;
                 margin-top: 10px;
+                right: 1rem;
+                float: right;
 
             }
             .header-head{
                 background-color: oldlace;
-                padding-top: 75px;
-                padding-bottom: 20px;
+                padding-top: 90px;
+                padding-bottom: 35px;
                 text-align: center;
                 margin-bottom: 10px;
             }
@@ -190,8 +140,11 @@
 </head>
 
 <body class="body-style">
+
+
+
                 <div id="title-bar" class="div-block-title-bar">
-                    <div class="div-block-title-bar-box">
+                    <div id = "titleContent" class="div-block-title-bar-box">
                         <div class="div-block-github">
                             <a class="a-font" href="http;//www.github.com">
                                 Github
@@ -201,6 +154,7 @@
                         </div>
                     </div>
                 </div>
+
                 <header class="header-head">
                     <h1 class ="h1-style">PepsiChen's HomePage</h1>
                     <p class ="p-style">Great works are performed not by strength but by perseverance</p>
@@ -257,7 +211,7 @@
                         </div>
                     </div>
                 </div>
-                <footer class="footer-style">
+                <footer id="foot" class="footer-style">
                     <div class="a-foot-content">
                         <a  class="a-font" onclick="aa()">
                             Information
